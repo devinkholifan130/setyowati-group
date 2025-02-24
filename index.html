@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETYOWATI GROUP</title>
+<link rel="website icon" href="SETYOWATI GROUP Logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!-- Style for KAOSKU -->
+<style>
+  /* Body Color */
+  :root {
+    --primary: #f37610;
+    --bg: #010101;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg);
+    color: white;
+  }
+  /* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 7%;
+  background-color: rgba(1, 1, 1, 0.9);
+  border-bottom: 1px solid #513c28;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+/* Animasi Navbar */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  font-style: italic;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar .navbar-logo:hover {
+  transform: scale(1.1);
+}
+
+.navbar .navbar-nav a {
+  color: white;
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.navbar .navbar-nav a:hover {
+  color: var(--primary);
+  transform: translateY(-3px);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url('SETYOWATI GROUP Wallpaper.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Animasi Hero */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero .content h1 {
+  font-size: 4em;
+  color: #ffffff;
+  text-shadow: 3px 3px 1px rgba(1, 1, 3, 0.5);
+  line-height: 1.2;
+  opacity: 0;
+  animation: slideIn 1s ease-out forwards 0.5s;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero .content p {
+  font-size: 1.6rem;
+  color: #e6a361;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards 0.8s;
+}
+
+.hero .content .cta,
+.hero .content .cta2 {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 1s ease-in-out forwards 1s;
+}
+
+.hero .content .cta {
+  background-color: var(--primary);
+}
+
+.hero .content .cta:hover {
+  background-color: rgb(200, 100, 34);
+  transform: scale(1.1);
+}
+
+.hero .content .cta2 {
+  background-color: red;
+}
+
+.hero .content .cta2:hover {
+  background-color: darkred;
+  transform: scale(1.1);
+}
+
+/* Animasi tombol */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+  /* About Styling */
+.about {
+padding: 2rem 1rem;
+background-color: #75470a;
+}
+
+.about h2 {
+text-align: center;
+margin-bottom: 2rem;
+font-size: 2.4rem;
+font-weight: bold;
+}
+
+.about h2 span {
+color: #f38d45; /* Warna khas KAOSKU */
+}
+
+/* Flexbox Styling for Row */
+.about .row {
+display: flex;
+align-items: center;
+gap: 2rem;
+flex-wrap: wrap; /* Agar tetap responsif */
+}
+
+/* Image Styling */
+.about .row .about-img {
+flex: 1 1 45%;
+}
+
+.about .row .about-img img {
+width: 100%;
+border-radius: 0.5rem; /* Memberikan sudut membulat */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan */
+}
+
+/* Content Styling */
+.about .row .content {
+flex: 1 1 45%;
+}
+
+.about .row .content h3 {
+font-size: 1.8rem;
+margin-bottom: 1rem;
+color: #fffefe;
+}
+
+.about .row .content p {
+margin-bottom: 0.5rem;
+font-size: 1.4rem;
+font-weight: bold;
+line-height: 1.6;
+color: #f7f5f4;
+}
+
+  /* Maps Styling */
+.maps {
+padding: 2rem 1rem;
+background-color: #eba448;
+color: #ffffff; /* Warna teks kontras */
+}
+
+.maps h2 {
+text-align: center;
+margin-bottom: 1rem;
+font-size: 2.4rem;
+font-weight: bold;
+}
+
+.maps span {
+color: #080808;
+}
+
+.maps p {
+text-align: center;
+max-width: 30rem;
+margin: auto;
+font-weight: bold;
+line-height: 1.6;
+color: #f0ddc3; /* Warna krem yang lembut, cocok untuk nuansa kopi */
+font-family: 'Merriweather', serif; /* Font klasik dan elegan */
+font-size: 1.7rem; /* Ukuran font yang ramah di mata */
+}
+
+.maps .row {
+display: flex;
+justify-content: center; /* Center the map */
+margin-top: 2rem;
+flex-wrap: wrap;
+}
+
+.maps .row .map {
+flex: 1 1 100%; /* Ensure it takes full width on smaller screens */
+max-width: 100%; /* Prevent it from exceeding its container */
+height: 400px; /* Set a fixed height for the map */
+border: none; /* Optional: remove border for cleaner look */
+}
+
+
+.follow {
+  background-color: #333;
+  color: #fff;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.follow .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.follow-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.follow-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.follow-icons .icon {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.follow-icons .icon a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.follow-icons .icon img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.follow-icons .icon p {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
+}
+
+.follow-icons .icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+.follow-icons .icon:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.follow-icons .icon:hover p {
+  color: #ffcc00;
+}
+
+
+  /* Footer Styling */
+  .footer {
+    background-color: #f8f9fa;
+    color: #212529;
+    padding: 2rem 1rem;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .footer-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 1rem;
+  }
+
+  .footer-title span {
+    color: #f4b183;
+  }
+  
+  .footer-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-links a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  
+/* Media Queries */
+
+
+/* Laptop */
+@media (max-width: 1366px) {
+html {
+  font-size: 75%;
+}
+}
+
+
+html {
+scroll-behavior: smooth;
+}
+
+/* Tablet */
+@media (max-width: 750px) {
+html {
+  font-size: 62.5%;
+}
+
+#menu {
+  display: inline-block;
+}
+
+.navbar .navbar-nav {
+  position: absolute;
+  top: 100%;
+  right: -100%;
+  background-color: #fff;
+  width: 30rem;
+  height: 100vh;
+  transition: 0.3s;
+}
+
+.navbar .navbar-nav.active {
+  right: 0;
+}
+
+.navbar .navbar-nav a {
+  color: var(--bg);
+  display: block;
+  margin: 1.5rem;
+  padding: 0.5rem;
+  font-size: 2rem;
+}
+}
+
+
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+html {
+  font-size: 55%;
+}
+}
+</style>
+</head>
+<body>
+<header class="navbar">
+  <div class="navbar-logo"><span style="color: var(--primary)">SETYOWATI GROUP</span></div>
+  <nav class="navbar-nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#maps">Location</a>
+    <a href="#follow">Follow</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="content">
+    <h1>Selamat Datang Ke <span style="color: var(--primary)">SETYOWATI GROUP</span></h1>
+    <p>Tempat Jersey Printing dan Sablon Di Purwokerto.</p>
+    <a href="kaosku.html" class="cta">Halaman KAOSKU</a>
+    <a href="spiik.html" class="cta2">Halaman SPIIK</a>
+    <a href="setyowatidashboard.html" class="cta">SETYOWATI GROUP Dashboard</a>
+  </div>
+</section>
+
+
+<!-- About Section -->
+<section id="about" class="about">
+<h2>Tentang <span>SETYOWATI GROUP</span></h2>
+
+<div class="row">
+  <div class="about-img">
+    <img src="SETYOWATI GROUP Logo.png" alt="Logo SETYOWATI">
+  </div>
+  <div class="content">
+    <h3>Apa yang Anda ketahui dengan SETYOWATI GROUP?</h3>
+    <p>SETYOWATI GROUP merupakan tempat pembuatan kaus, jersey dan jaket serta sablon di Purwokerto.
+        Brand yang tersedia disini adalah KAOSKU & SPIIK, dua brand kami adalah brand lokal asli dari Indonesia.
+    </p>
+    <p>Segera datang ke tempat kami untuk memesan brand-brand lokal terbaik kami!</p>
+  </div>
+</div>
+</section>
+
+<!-- Location/Maps Section -->
+<section id="maps" class="maps">
+<h2>Lokasi <span>SETYOWATI GROUP</span></h2>
+<p>Inilah lokasi SETYOWATI GROUP di Purwokerto</p>
+
+<div class="row">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.3697183674935!2d109.21785637379914!3d-7.424272973129348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655e6ee0815923%3A0x2b63e1a49c3a5e57!2sSetyowati%20Printing%20Jersey!5e0!3m2!1sid!2sid!4v1737449951054!5m2!1sid!2sid"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+</div>
+</section>
+
+
+<section id="follow" class="follow">
+    <div class="container">
+      <h2 class="follow-title">UNTUK POSTINGAN DAN KONTEN SETYOWATI GROUP, KALIAN BISA FOLLOW INSTAGRAM & YOUTUBE KAMI</h2>
+      <div class="follow-icons">
+        <div class="icon">
+          <a href="https://www.instagram.com/setyowatiprintingjersey/" target="_blank">
+            <img src="Instagram Logo.png" alt="Instagram Icon" />
+            <p>SETYOWATI GROUP INSTAGRAM</p>
+          </a>
+        </div>
+        <div class="icon">
+          <a href="https://www.youtube.com/@setyowatigroup" target="_blank">
+            <img src="Youtube Icon.png" alt="YouTube Icon" />
+            <p>SETYOWATI GROUP YOUTUBE</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-section">
+      <div class="footer-title">Tentang <span>SETYOWATI GROUP</span></div>
+      <p class="footer-description">Tempat Pembuatan Kaus, Jersey dan Jaket Lokal Di Purwokerto.</p>
+    </div>
+    <div class="footer-section">
+      <div class="footer-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="tentangkaosku.html">Tentang KAOSKU</a></li>
+        <li><a href="tentangspiik.html">Tentang SPIIK</a></li>
+        <li><a href="tutorialpesan.html">Tutorial Pemesanan</a></li>
+        <li><a href="https://wa.me/628112788223" target="_blank">Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <div class="footer-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="#">Email</a></li>
+        <li><a href="#">Phone</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- My JavaScript -->
+<script>
+  // JavaScript untuk mengaktifkan search box
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchIcon = document.getElementById("search-icon");
+    const searchBox = document.getElementById("search-box");
+  
+    // Event saat label search diklik
+    searchIcon.addEventListener("click", function () {
+      // Toggle input visibility
+      searchBox.classList.toggle("visible");
+      if (searchBox.classList.contains("visible")) {
+        searchBox.focus(); // Fokus pada input
+      }
+    });
+  
+    // Event untuk menangani pencarian
+    searchBox.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        const query = searchBox.value.trim();
+        if (query) {
+          alert(`Searching for: ${query}`);
+          // Tambahkan logika untuk hasil pencarian, jika perlu
+        }
+      }
+    });
+  });
+  
+  // Fungsi untuk menambahkan item ke keranjang belanja
+  function addToCart(item) {
+    // Implementasi logika untuk menambahkan item ke keranjang belanja
+    // Misalnya, Anda bisa menggunakan localStorage atau mengirim permintaan ke server
+    console.log('Item ' + item + ' ditambahkan ke keranjang');
+  }
+  
+  // Mendapatkan semua tombol "Beli"
+  const buyButtons = document.querySelectorAll('.buy-button');
+  
+  // Menambahkan event listener ke setiap tombol
+  buyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.parentNode.querySelector('.menu-card-title').textContent;
+      addToCart(item);
+    });
+  });
+      </script>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
+
+</body>
+</html>

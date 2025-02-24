@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETYOWATI GROUP Dashboard</title>
+    <link rel="website icon" href="SETYOWATI GROUP Logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Pastikan Font Awesome sudah di-load -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .sidebar { background: #9b5402; color: white; width: 250px; min-height: 100vh; padding: 20px; position: fixed; }
+        .content { margin-left: 270px; padding: 20px; }
+        .card { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h3>SETYOWATI GROUP</h3>
+        <ul class="nav flex-column p-3">
+            <!-- Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#dashboard">
+                    <i class="fa-solid fa-house"></i> Dashboard
+                </a>
+            </li>
+        
+            <!-- Data Report -->
+            <li class="nav-item">
+                <a class="nav-link text-white" href="setyowatidatareport.html">
+                    <i class="fa-solid fa-chart-bar"></i> Data Report
+                </a>
+            </li>
+        
+            <!-- Exit -->
+            <li class="nav-item mt-auto">
+                <a class="nav-link text-danger fw-bold" href="index.html">
+                    <i class="fa-solid fa-right-from-bracket"></i> Exit
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+    <div class="content" id="dashboard">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Dashboard</h2>
+            <p class="text-danger" style="font-weight: bold;">Hanya pihak Setyowati Group yang boleh
+                mengisi data pada dashboard
+            </p>
+            <div>
+                <a href="setyowatigroupform.html" class="btn btn-success">+ Tambah Data</a>
+                <button class="btn btn-danger ms-2" onclick="hapusData()">Hapus Data</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Total Kaus Terjual</h5>
+                    <h3 id="displayTotalKaus">0</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Total Jersey Terjual</h5>
+                    <h3 id="displayTotalJersey">0</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Total /Jaket Terjual</h5>
+                    <h3 id="displayTotalJaket">0</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Jumlah Uang Dihasilkan</h5>
+                    <h3 id="displayTotalUang">Rp 0</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Periode</h5>
+                    <h3 id="displayPeriode">-</h3>
+                    <small id="displayTanggal"></small> <!-- Menampilkan tanggal -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <canvas id="kausChart"></canvas>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <canvas id="jerseyChart"></canvas>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <canvas id="jaketChart"></canvas>
+                    </div>
+            <div class="col-md-6">
+                <canvas id="uangChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script>
+        var tempCtx = document.getElementById('temperatureChart').getContext('2d');
+        new Chart(tempCtx, {
+            type: 'line',
+            data: { labels: ['23:50', '23:55', '00:05', '00:10'], datasets: [{ label: 'Temperature', data: [26, 28, 26, 25], borderColor: 'red', fill: false }] }
+        });
+        var humCtx = document.getElementById('humidityChart').getContext('2d');
+        new Chart(humCtx, {
+            type: 'line',
+            data: { labels: ['23:50', '23:55', '00:05', '00:10'], datasets: [{ label: 'Humidity', data: [90, 92, 91, 93], borderColor: 'blue', fill: false }] }
+        });
+    </script>
+
+<script>
+    let salesData = JSON.parse(localStorage.getItem("salesData"));
+
+    if (salesData) {
+        document.getElementById("displayTotalKaus").innerText = salesData.totalKaus;
+        document.getElementById("displayTotalJersey").innerText = salesData.totalJersey;
+        document.getElementById("displayTotalJaket").innerText = salesData.totalJaket;
+        document.getElementById("displayTotalUang").innerText = "Rp " + salesData.totalUang;
+        document.getElementById("displayPeriode").innerText = salesData.periode;
+
+        // Tambahkan tanggal jika ada
+        if (salesData.tanggal) {
+            document.getElementById("displayTanggal").innerText = "Tanggal: " + salesData.tanggal;
+        }
+
+        let ctx1 = document.getElementById('kausChart').getContext('2d');
+        let ctx3 = document.getElementById('jerseyChart').getContext('2d');
+        let ctx4 = document.getElementById('jaketChart').getContext('2d');
+        let ctx2 = document.getElementById('uangChart').getContext('2d');
+
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ["Total Kaus"],
+                datasets: [{
+                    label: 'Total Kaus Terjual',
+                    data: [salesData.totalKaus],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ["Total Jersey"],
+                datasets: [{
+                    label: 'Total Jersey Terjual',
+                    data: [salesData.totalJersey],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        new Chart(ctx4, {
+            type: 'bar',
+            data: {
+                labels: ["Total Jaket"],
+                datasets: [{
+                    label: 'Total Jaket Terjual',
+                    data: [salesData.totalJaket],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ["Jumlah Uang"],
+                datasets: [{
+                    label: 'Total Uang Dihasilkan',
+                    data: [salesData.totalUang],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+    }
+
+    // Fungsi untuk menghapus data
+    function hapusData() {
+            let konfirmasi = confirm("Apakah Anda yakin ingin menghapus semua data?");
+            if (konfirmasi) {
+                localStorage.removeItem("salesData");
+                alert("Data berhasil dihapus!");
+                location.reload(); // Refresh halaman agar tampilan kembali kosong
+            }
+        }
+</script>
+
+
+</body>
+</html>

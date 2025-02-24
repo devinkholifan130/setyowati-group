@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Daftar Kaus Dan Jaket SPIIK</title>
+    <link rel="website icon" href="SPIIK Logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom color styles */
+        body {
+            background-color: #fff8f8;
+            color: #ee0707;
+        }
+        h1 {
+            color: #f70808; 
+        }
+        .table {
+            background-color: #fffffe; 
+        }
+        .table th, .table td {
+            color: #fd0606;
+        }
+        .table-bordered th, .table-bordered td {
+            border-color: #000000; 
+        }
+        .table-hover tbody tr:hover {
+            background-color: #fff1ec;
+        }
+        .table img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px;
+            text-align: center;
+            background: #f70303;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .back-btn:hover {
+            background: #fa0303;
+        }
+
+        
+  
+  /* Media Queries */
+  
+  
+  
+  /* Tablet */
+  @media (max-width: 750px) {
+    html {
+      font-size: 62.5%;
+    }
+  
+    #menu {
+      display: inline-block;
+    }
+  
+    .navbar .navbar-nav {
+      position: absolute;
+      top: 100%;
+      right: -100%;
+      background-color: #fff;
+      width: 30rem;
+      height: 100vh;
+      transition: 0.3s;
+    }
+  
+    .navbar .navbar-nav.active {
+      right: 0;
+    }
+  
+    .navbar .navbar-nav a {
+      color: var(--bg);
+      display: block;
+      margin: 1.5rem;
+      padding: 0.5rem;
+      font-size: 2rem;
+    }
+  }
+  
+  
+  
+  /* Mobile Phone */
+  @media (max-width: 450px) {
+    html {
+      font-size: 55%;
+    }
+  }
+
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Daftar Kaus Dan Jaket SPIIK</h1>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Gambar</th>
+                    <th>Nama Produk</th>
+                    <th>Ukuran</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="SPIIK KITSUNE 1.jpg" alt="SPIIK KITSUNE"></td>
+                    <td>SPIIK KITSUNE</td>
+                    <td>M, L, XL</td>
+                    <td>Rp 36.000,00</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><img src="SPIIK LONG BOARD 1.jpg" alt="SPIIK LONG BOARD"></td>
+                    <td>SPIIK LONG BOARD</td>
+                    <td>S, M, L</td>
+                    <td>Rp 38.000,00</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><img src="SPIIK DRAGON 1.jpg" alt="SPIIK DRAGON"></td>
+                    <td>SPIIK DRAGON</td>
+                    <td>M, L, XL</td>
+                    <td>Rp 30.000,00</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><img src="SPIIK KICK START 1.jpg" alt="SPIIK KICK START"></td>
+                    <td>SPIIK KICK START</td>
+                    <td>M, L, XL</td>
+                    <td>Rp 30.000,00</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><img src="SPIIK LONE WOLF 1.jpg" alt="SPIIK LONE WOLF"></td>
+                    <td>SPIIK LONE WOLF</td>
+                    <td>M, L, XL</td>
+                    <td>Rp 35.000,00</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><img src="SPIIK MONSTER 1.jpg" alt="SPIIK MONSTER"></td>
+                    <td>SPIIK MONSTER</td>
+                    <td>M, L, XL</td>
+                    <td>Rp 35.000,00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="spiik.html" class="back-btn">Kembali ke SPIIK</a>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

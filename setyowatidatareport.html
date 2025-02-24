@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Penjualan - Setyowati Group</title>
+    <link rel="website icon" href="SETYOWATI GROUP Logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Laporan Penjualan - Setyowati Group</h2>
+        <p class="text-danger text-center" style="font-weight: bold; font-size: 20px;">Hanya pihak Setyowati Group yang boleh
+            membuka laporan data dan mencetak laporan tersebut
+        </p>
+        
+        <!-- Filter Data -->
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="filterPeriode" class="form-label">Filter Periode</label>
+                <select id="filterPeriode" class="form-select">
+                    <option value="hari">Hari Ini</option>
+                    <option value="bulan">Bulan Ini</option>
+                    <option value="tahun">Tahun Ini</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="filterTanggal" class="form-label">Pilih Tanggal</label>
+                <input type="date" id="filterTanggal" class="form-control">
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button class="btn btn-primary w-100" onclick="filterData()">Tampilkan Laporan</button>
+            </div>
+        </div>
+
+        <!-- Tabel Laporan -->
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Kaus Terjual</th>
+                        <th>Jersey Terjual</th>
+                        <th>Jaket Terjual</th>
+                        <th>Total Pendapatan</th>
+                    </tr>
+                </thead>
+                <tbody id="laporanBody">
+                    <!-- Data akan ditampilkan di sini melalui JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Grafik Penjualan -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <canvas id="chartKaus"></canvas>
+            </div>
+            <div class="col-md-6">
+                <canvas id="chartPendapatan"></canvas>
+            </div>
+        </div>
+
+        <!-- Tombol Cetak Laporan -->
+        <div class="text-center mt-4">
+            <button class="btn btn-success" onclick="window.print()">Cetak Laporan</button>
+            <a href="setyowatidashboard.html" class="btn btn-warning">Kembali Ke Dashboard</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Simulasi data laporan
+        let laporanData = [
+            { tanggal: "2025-02-20", kaus: 50, jersey: 30, jaket: 10, pendapatan: 5000000 },
+            { tanggal: "2025-02-21", kaus: 40, jersey: 20, jaket: 15, pendapatan: 4500000 },
+            { tanggal: "2025-02-22", kaus: 60, jersey: 35, jaket: 20, pendapatan: 6000000 }
+        ];
+
+        function tampilkanLaporan(data) {
+            let laporanBody = document.getElementById("laporanBody");
+            laporanBody.innerHTML = "";
+            data.forEach(item => {
+                laporanBody.innerHTML += `
+                    <tr>
+                        <td>${item.tanggal}</td>
+                        <td>${item.kaus}</td>
+                        <td>${item.jersey}</td>
+                        <td>${item.jaket}</td>
+                        <td>Rp ${item.pendapatan.toLocaleString()}</td>
+                    </tr>
+                `;
+            });
+
+            tampilkanChart(data);
+        }
+
+        function filterData() {
+            let filterTanggal = document.getElementById("filterTanggal").value;
+            let dataFilter = laporanData.filter(item => item.tanggal === filterTanggal);
+            if (dataFilter.length === 0) {
+                alert("Data tidak ditemukan untuk tanggal yang dipilih.");
+            } else {
+                tampilkanLaporan(dataFilter);
+            }
+        }
+
+        function tampilkanChart(data) {
+            let labels = data.map(item => item.tanggal);
+            let kausData = data.map(item => item.kaus);
+            let pendapatanData = data.map(item => item.pendapatan);
+
+            let ctx1 = document.getElementById("chartKaus").getContext("2d");
+            new Chart(ctx1, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Kaus Terjual",
+                        data: kausData,
+                        backgroundColor: "rgba(75, 192, 192, 0.6)"
+                    }]
+                }
+            });
+
+            let ctx2 = document.getElementById("chartPendapatan").getContext("2d");
+            new Chart(ctx2, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Total Pendapatan",
+                        data: pendapatanData,
+                        backgroundColor: "rgba(255, 99, 132, 0.6)"
+                    }]
+                }
+            });
+        }
+
+        // Tampilkan data awal
+        tampilkanLaporan(laporanData);
+
+        function loadSalesData() {
+    let salesData = JSON.parse(localStorage.getItem("salesData"));
+
+    if (salesData) {
+        let laporanBody = document.getElementById("laporanBody");
+        laporanBody.innerHTML = `
+            <tr>
+                <td>${salesData.tanggal}</td>
+                <td>${salesData.totalKaus}</td>
+                <td>${salesData.totalJersey}</td>
+                <td>${salesData.totalJaket}</td>
+                <td>Rp ${salesData.totalUang.toLocaleString()}</td>
+            </tr>
+        `;
+
+        tampilkanChart(salesData);
+    } else {
+        alert("Data tidak ditemukan! Pastikan Anda telah mengisi data di dashboard.");
+    }
+}
+
+function tampilkanChart(data) {
+    let ctx1 = document.getElementById("chartKaus").getContext("2d");
+    let ctx2 = document.getElementById("chartPendapatan").getContext("2d");
+
+    new Chart(ctx1, {
+        type: "bar",
+        data: {
+            labels: ["Kaus", "Jersey", "Jaket"],
+            datasets: [{
+                label: "Barang Terjual",
+                data: [data.totalKaus, data.totalJersey, data.totalJaket],
+                backgroundColor: ["rgba(75, 192, 192, 0.6)", "rgba(255, 206, 86, 0.6)", "rgba(153, 102, 255, 0.6)"]
+            }]
+        }
+    });
+
+    new Chart(ctx2, {
+        type: "bar",
+        data: {
+            labels: ["Total Pendapatan"],
+            datasets: [{
+                label: "Total Pendapatan",
+                data: [data.totalUang],
+                backgroundColor: "rgba(255, 99, 132, 0.6)"
+            }]
+        }
+    });
+}
+
+// Panggil fungsi saat halaman dimuat
+window.onload = loadSalesData;
+
+    </script>
+
+</body>
+</html>

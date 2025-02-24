@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Kaus & Jersey KAOSKU</title>
+    <link rel="website icon" href="KAOSKU Logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<style>
+    .bg-kaosku {
+        background: #be5906;
+    }
+
+    .text-kaosku {
+        font-weight: bold;
+        color: #be5906;
+    }
+
+    .btn-kaosku {
+        font-weight: bold;
+        background: #ee8e40;
+        color: white;
+    }
+
+    .btn-kaosku:hover {
+        font-weight: bold;
+        background: white;
+        color: #ee8e40;
+    }
+    .not-available {
+    opacity: 0.5;
+    pointer-events: none;
+    position: relative;
+}
+
+/* Membentuk latar belakang X */
+.not-available::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    background: rgba(255, 0, 0, 0.8);
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 0;
+    clip-path: polygon(0% 40%, 40% 40%, 40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%);
+}
+
+/* Menampilkan teks di atas latar belakang */
+.not-available::after {
+    content: "NOT AVAILABLE NOW";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+
+  
+  /* Media Queries */
+  
+  
+  
+  /* Tablet */
+  @media (max-width: 750px) {
+    html {
+      font-size: 62.5%;
+    }
+  
+    #menu {
+      display: inline-block;
+    }
+  
+    .navbar .navbar-nav {
+      position: absolute;
+      top: 100%;
+      right: -100%;
+      background-color: #fff;
+      width: 30rem;
+      height: 100vh;
+      transition: 0.3s;
+    }
+  
+    .navbar .navbar-nav.active {
+      right: 0;
+    }
+  
+    .navbar .navbar-nav a {
+      color: var(--bg);
+      display: block;
+      margin: 1.5rem;
+      padding: 0.5rem;
+      font-size: 2rem;
+    }
+  }
+  
+  
+  
+  /* Mobile Phone */
+  @media (max-width: 450px) {
+    html {
+      font-size: 55%;
+    }
+  }
+
+
+</style>
+<body class="bg-kaosku">
+    <div class="container py-5">
+        <div class="card shadow-lg p-4">
+            <h2 class="text-center text-kaosku">Keranjang Belanja Kaus Dan Jersey KAOSKU</h2>
+            <div id="cartItems" class="mt-4"></div>
+
+            <!-- Wilayah Pengiriman -->
+<h4 class="mt-4">Wilayah Pengiriman</h4>
+<div class="row">
+    <div class="col-md-4">
+        <label for="provinsi" class="form-label">Provinsi</label>
+        <div class="input-group">
+            <input type="text" id="provinsi" class="form-control" placeholder="Masukkan provinsi Anda">
+            <button class="btn btn-danger" onclick="clearField('provinsi')">❌</button>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="kota" class="form-label">Kota/Kabupaten</label>
+        <div class="input-group">
+            <input type="text" id="kota" class="form-control" placeholder="Masukkan kota/kabupaten Anda">
+            <button class="btn btn-danger" onclick="clearField('kota')">❌</button>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="kecamatan" class="form-label">Kecamatan/Desa</label>
+        <div class="input-group">
+            <input type="text" id="kecamatan" class="form-control" placeholder="Masukkan kecamatan/desa Anda">
+            <button class="btn btn-danger" onclick="clearField('kecamatan')">❌</button>
+        </div>
+    </div>
+</div>
+
+            <!-- Metode Pembayaran -->
+            <h4 class="mt-4">Pilih Metode Pembayaran</h4>
+            <div class="row text-center mt-3">
+                <div class="col-md-4">
+                    <input type="radio" name="payment" value="DANA" id="dana" class="btn-check">
+                    <label class="btn btn-outline-primary w-100" for="dana">
+                        <img src="DANA Icon.png" width="50"> DANA
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label class="payment-option not-available">
+                        <input type="radio" name="payment" value="GoPay" disabled>
+                        <img src="GoPay Icon.png" alt="GoPay" width="50">
+                        <span>GoPay</span>
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label class="payment-option not-available">
+                        <input type="radio" name="payment" value="ShopeePay" disabled>
+                        <img src="ShopeePay Icon.png" alt="ShopeePay" width="50">
+                        <span>ShopeePay</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-success me-2" onclick="confirmPayment()">Gunakan Metode Pembayaran Ini</button>
+                <button class="btn btn-danger" onclick="cancelPayment()">Batalkan</button>
+            </div>
+
+            <div class="mt-4 p-3 bg-secondary text-white rounded text-center">
+                <h5>Total: <span id="subtotal">Rp0</span></h5>
+                <button class="btn btn-danger w-100 mt-2" onclick="clearCart()">Hapus Keranjang</button>
+                <a href="#" class="btn btn-success w-100 mt-2" onclick="checkoutWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="galerikaosku.html" class="btn btn-kaosku"><i class="fas fa-arrow-left"></i> Kembali ke Menu</a>
+        </div>
+    </div>
+
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartItems = document.getElementById("cartItems");
+            let subtotal = 0;
+            cartItems.innerHTML = "";
+            cart.forEach((product, index) => {
+                subtotal += product.price * product.quantity;
+                cartItems.innerHTML += `
+                    <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                        <img src="${product.image}" alt="${product.name}" class="img-thumbnail" width="80">
+                        <div>
+                            <h6>${product.name}</h6>
+                            <p class="text-muted">Rp${product.price.toLocaleString()}</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-primary" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span class="mx-2">${product.quantity}</span>
+                            <button class="btn btn-sm btn-outline-primary" onclick="updateQuantity(${index}, 1)">+</button>
+                        </div>
+                        <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Hapus</button>
+                    </div>`;
+            });
+            document.getElementById("subtotal").innerText = `Rp${subtotal.toLocaleString()}`;
+        }
+
+        function updateQuantity(index, change) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem("cart");
+            loadCart();
+        }
+
+        function confirmPayment() {
+            let selectedPayment = document.querySelector('input[name="payment"]:checked');
+            if (!selectedPayment) {
+                alert("Silakan pilih metode pembayaran terlebih dahulu!");
+                return;
+            }
+            alert("Metode Pembayaran Yang Anda Pilih Telah Dikonfirmasi: " + selectedPayment.value);
+        }
+
+        function cancelPayment() {
+            let selectedPayment = document.querySelector('input[name="payment"]:checked');
+            if (selectedPayment) {
+                selectedPayment.checked = false;
+                alert("Pilihan pembayaran dibatalkan.");
+            }
+        }
+
+        function checkoutWhatsApp() {
+            let provinsi = document.getElementById("provinsi").value;
+            let kota = document.getElementById("kota").value;
+            let kecamatan = document.getElementById("kecamatan").value;
+            let selectedPayment = document.querySelector('input[name="payment"]:checked');
+
+            if (!provinsi || !kota || !kecamatan) {
+                alert("Silakan isi wilayah pengiriman sebelum checkout!");
+                return;
+            }
+            if (!selectedPayment) {
+                alert("Silakan pilih metode pembayaran sebelum checkout!");
+                return;
+            }
+
+            let message = `Halo, saya ingin melakukan checkout.\n\nWilayah Pengiriman:\n- Provinsi: ${provinsi}\n- Kota/Kabupaten: ${kota}\n- Kecamatan: ${kecamatan}\n\nMetode Pembayaran: ${selectedPayment.value}`;
+            window.open(`https://wa.me/6281213911456?text=${encodeURIComponent(message)}`, "_blank");
+        }
+
+        document.addEventListener("DOMContentLoaded", loadCart);
+    </script>
+
+<script>
+    function clearField(fieldId) {
+        document.getElementById(fieldId).value = "";
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

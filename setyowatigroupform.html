@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data Penjualan - SETYOWATI GROUP</title>
+    <link rel="website icon" href="SETYOWATI GROUP Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Tambah Data Penjualan</h2>
+        <p class="text-danger text-center" style="font-weight: bold; font-size: 20px;">Hanya pihak Setyowati Group yang boleh
+            mengisi form penambahan data kaus, jersey, jaket, jumlah uang dan periode
+        </p>
+        <a href="setyowatidashboard.html" class="btn btn-warning">Keluar Dari Form</a>
+
+        <form id="salesForm">
+            <div class="mb-3">
+                <label class="form-label">Total Kaus Terjual</label>
+                <input type="number" id="totalKaus" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Total Jersey Terjual</label>
+                <input type="number" id="totalJersey" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Total Jaket Terjual</label>
+                <input type="number" id="totalJaket" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Jumlah Uang Dihasilkan (Rp)</label>
+                <input type="number" id="totalUang" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Periode</label>
+                <select id="periode" class="form-control">
+                    <option value="Harian">Harian</option>
+                    <option value="Bulanan">Bulanan</option>
+                    <option value="Tahunan">Tahunan</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Pilih Tanggal</label>
+                <input type="date" class="form-control" id="tanggal" required>
+            </div>
+
+
+            <button type="submit" class="btn btn-success w-100">+ Tambah</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("salesForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let totalKaus = document.getElementById("totalKaus").value;
+            let totalJersey = document.getElementById("totalJersey").value;
+            let totalJaket = document.getElementById("totalJaket").value;
+            let totalUang = document.getElementById("totalUang").value;
+            let periode = document.getElementById("periode").value;
+            let tanggal = document.getElementById("tanggal").value;
+
+            let salesData = {
+                totalKaus: totalKaus,
+                totalJersey: totalJersey,
+                totalJaket: totalJaket,
+                totalUang: totalUang,
+                periode: periode,
+                tanggal: tanggal
+            };
+
+            localStorage.setItem("salesData", JSON.stringify(salesData));
+
+            window.location.href = "setyowatidashboard.html";
+        });
+    </script>
+</body>
+</html>

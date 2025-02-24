@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Pemesanan Kaus & Jaket SPIIK</title>
+    <link rel="website icon" href="SPIIK Logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            background-color: #b90909;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .step-card {
+            background: #fdfbfb;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .step-number {
+            background: #f80202;
+            color: black;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .step-content {
+            flex-grow: 1;
+            color: black;
+            font-weight: bold;
+        }
+
+        
+  /* Menu Section Styling */
+.menu {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.menu-item {
+    text-align: center;
+}
+
+.menu-item h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fcfcfc;
+    margin-bottom: 10px;
+}
+
+.menu-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fffbfb;
+    color: #fd0505;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.menu-button:hover {
+    background-color: #6a2323;
+}
+
+
+  
+  /* Media Queries */
+  
+  
+  
+  
+  /* Tablet */
+  @media (max-width: 750px) {
+    html {
+      font-size: 62.5%;
+    }
+  
+    #menu {
+      display: inline-block;
+    }
+  
+    .navbar .navbar-nav {
+      position: absolute;
+      top: 100%;
+      right: -100%;
+      background-color: #fff;
+      width: 30rem;
+      height: 100vh;
+      transition: 0.3s;
+    }
+  
+    .navbar .navbar-nav.active {
+      right: 0;
+    }
+  
+    .navbar .navbar-nav a {
+      color: var(--bg);
+      display: block;
+      margin: 1.5rem;
+      padding: 0.5rem;
+      font-size: 2rem;
+    }
+  }
+  
+  
+  
+  /* Mobile Phone */
+  @media (max-width: 450px) {
+    html {
+      font-size: 55%;
+    }
+  }
+
+  
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Tutorial Pemesanan Kaus dan Jaket SPIIK</h2>
+        
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="step-card d-flex align-items-center" id="step1">
+                    <div class="step-number">1</div>
+                    <div class="step-content ms-3">
+                        <h5>Pilih Kaus atau Jaket Favorit Anda</h5>
+                        <p>Kunjungi <a href="galerispiik.html" style="text-decoration: none;">Galeri SPIIK</a>
+                           dan pilih kaus atau jaket yang ingin Anda pesan.</p>
+                    </div>
+                </div>
+                
+                <div class="step-card d-flex align-items-center" id="step2">
+                    <div class="step-number">2</div>
+                    <div class="step-content ms-3">
+                        <h5>Sesuaikan Pesanan</h5>
+                        <p>Pilih kaus atau jaket yang anda suka sesuai selera.</p>
+                    </div>
+                </div>
+                
+                <div class="step-card d-flex align-items-center" id="step3">
+                    <div class="step-number">3</div>
+                    <div class="step-content ms-3">
+                        <h5>Menentukan Jumlah Kaus/Jaket & Metode Pembayaran</h5>
+                        <p>Tentukan jumlah kaus atau jaket yang anda pesan, kemudian pilih metode pembayaran yang anda inginkan.</p>
+                    </div>
+                </div>
+
+                <div class="step-card d-flex align-items-center" id="step4">
+                    <div class="step-number">3</div>
+                    <div class="step-content ms-3">
+                        <h5>Checkout via WhatsApp</h5>
+                        <p>Tekan Checkout via WhatsApp yang sudah tertautkan link nomor kontak WhatsApp untuk 
+                            detail pemesanan lebih lanjut .</p>
+                    </div>
+                </div>
+                
+                <div class="step-card d-flex align-items-center" id="step5">
+                    <div class="step-number">5</div>
+                    <div class="step-content ms-3">
+                        <h5>Nikmati Kenyamanan Kaus/Jaket Anda</h5>
+                        <p>Ambil pesanan Anda dan nikmati kenyamanan kaus atau jaket favorit Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<!-- Menu Section -->
+<section class="menu" id="menu">
+    <div class="menu-container">
+        <div class="menu-item">
+            <h3>SPIIK</h3>
+            <a href="spiik.html" class="menu-button">SPIIK</a>
+        </div>
+    </div>
+  </section>
+    
+    <script>
+        gsap.from(".step-card", { 
+            opacity: 0, 
+            y: 50, 
+            duration: 1, 
+            stagger: 0.3 
+        });
+    </script>
+    
+</body>
+</html>

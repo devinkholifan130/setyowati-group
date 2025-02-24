@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Kaus & Jersey KAOSKU</title>
+    <link rel="website icon" href="KAOSKU Logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+        }
+        .gallery-item h5 {
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .price {
+            font-size: 16px;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .buy-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            background: #ff3b30;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .buy-btn:hover {
+            background: #d32f2f;
+        }
+        .buy-btn i {
+            margin-left: 8px;
+        }
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px;
+            text-align: center;
+            background: #7e4e05;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .back-btn:hover {
+            background: #7e4e05;
+        }
+
+        .separator {
+            width: 100%;
+            height: 2px;
+            background: #683206;
+            margin: 20px 0;
+        }
+
+        .price-selector {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #ff6600; /* Warna utama toko online */
+    border-radius: 8px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.price-selector:hover {
+    border-color: #ff4500;
+    background: #ffe6d5;
+}
+
+.price-selector:focus {
+    box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.5);
+}
+
+.price-selector option {
+    font-size: 14px;
+    font-weight: normal;
+    background: #fff;
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center my-4">Galeri Kaus KAOSKU</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="KAOSKU BLUE SHIRT.jpg" alt="Kaus KAOSKU 1">
+                <h5>Kaus Polos KAOSKU Biru</h5>
+                <p class="price">Rp 36.000,00,-</p>
+                <a href="#" 
+                   class="buy-btn addToCart"
+                   data-name="Kaus Polos KAOSKU Biru"
+                   data-price="36000"
+                   data-image="KAOSKU BLUE SHIRT.jpg">
+                   Beli Sekarang <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="KAOSKU CYAN SHIRT.jpg" alt="Kaus KAOSKU 2">
+                <h5>Kaus Polos KAOSKU Cyan</h5>
+                <p class="price">Rp 36.000,00,-</p>
+                <a href="#" 
+                   class="buy-btn addToCart"
+                   data-name="Kaus Polos KAOSKU Cyan"
+                   data-price="36000"
+                   data-image="KAOSKU CYAN SHIRT.jpg">
+                   Beli Sekarang <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="KAOSKU GREY SHIRT.jpg" alt="Kaus KAOSKU 3">
+                <h5>Kaus Polos KAOSKU Abu-abu</h5>
+                <p class="price">Rp 36.000,00,-</p>
+                <a href="#" 
+                   class="buy-btn addToCart"
+                   data-name="Kaus Polos KAOSKU Abu-abu"
+                   data-price="36000"
+                   data-image="KAOSKU GREY SHIRT.jpg">
+                   Beli Sekarang <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="KAOSKU ORANGE SHIRT.jpg" alt="Kaus KAOSKU 4">
+                <h5>Kaus Polos KAOSKU Jingga/Orange</h5>
+                <p class="price">Rp 38.000,00, -</p>
+                <a href="#" 
+                class="buy-btn addToCart"
+                data-name="Kaus Polos KAOSKU Jingga/Orange"
+                data-price="38000"
+                data-image="KAOSKU ORANGE SHIRT.jpg">
+                Beli Sekarang <i class="fas fa-shopping-cart"></i>
+             </a>
+                        </div>
+            <div class="gallery-item">
+                <img src="KAOSKU RED SHIRT.jpg" alt="Kaus KAOSKU 5">
+                <h5>Kaus Polos KAOSKU Merah</h5>
+                <p class="price">Rp 38.000,00, -</p>
+                <a href="#" 
+                   class="buy-btn addToCart"
+                   data-name="Kaus Polos KAOSKU Merah"
+                   data-price="38000"
+                   data-image="KAOSKU RED SHIRT.jpg">
+                   Beli Sekarang <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            <div class="gallery-item">
+                <img src="KAOSKU PINK SHIRT.jpg" alt="Kaus KAOSKU 4">
+                <h5>Kaus Polos KAOSKU Pink</h5>
+                <p class="price">Rp 38.000,00, -</p>
+                <a href="#" 
+                   class="buy-btn addToCart"
+                   data-name="Kaus Polos KAOSKU Pink"
+                   data-price="38000"
+                   data-image="KAOSKU PINK SHIRT.jpg">
+                   Beli Sekarang <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+
+<div class="separator"></div>
+
+
+<div class="container">
+    <h2 class="text-center my-4">Galeri Jersey KAOSKU</h2>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="KAOSKU WHITE PINK JERSEY.jpg" alt="Jersey KAOSKU 1">
+            <h5>Jersey KAOSKU White Pink</h5>
+            <p class="price">Rp 165.000,00, -</p>
+    <!-- Tombol Beli -->
+    <a href="#" 
+       class="buy-btn addToCart"
+       data-name="Jersey KAOSKU White Pink"
+       data-price="165000"
+       data-image="KAOSKU WHITE PINK JERSEY.jpg">
+       Beli Sekarang <i class="fas fa-shopping-cart"></i>
+    </a>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="KAOSKU GREEN WITH YELLOW STRIPE JERSEY.jpg" alt="Jersey KAOSKU 2">
+            <h5>Jersey KAOSKU Green With Yellow Stripe</h5>
+            <p class="price">Rp 165.000,00, -</p>
+    <!-- Tombol Beli -->
+    <a href="#" 
+       class="buy-btn addToCart"
+       data-name="Jersey KAOSKU Green With Yellow Stripe"
+       data-price="165000"
+       data-image="KAOSKU GREEN WITH YELLOW STRIPE JERSEY.jpg">
+       Beli Sekarang <i class="fas fa-shopping-cart"></i>
+    </a>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="KAOSKU GREEN RED JERSEY.jpg" alt="Jersey KAOSKU 3">
+            <h5>Jersey KAOSKU Green With Red Stripe</h5>
+            <p class="price">Rp 180.000,00, -</p>
+    <!-- Tombol Beli -->
+    <a href="#" 
+       class="buy-btn addToCart"
+       data-name="Jersey KAOSKU Green With Yellow Stripe"
+       data-price="180000"
+       data-image="KAOSKU GREEN WITH YELLOW STRIPE JERSEY.jpg">
+       Beli Sekarang <i class="fas fa-shopping-cart"></i>
+    </a>
+        </div>
+        
+    </div>
+
+
+        <a href="kaosku.html" class="back-btn">Kembali ke KAOSKU</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const addToCartButtons = document.querySelectorAll(".addToCart");
+    
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", function (event) {
+                    event.preventDefault();
+    
+                    const name = this.getAttribute("data-name");
+                    const price = this.getAttribute("data-price");
+                    const image = this.getAttribute("data-image");
+    
+                    console.log("Produk Ditambahkan ke Keranjang:");
+                    console.log("Nama:", name);
+                    console.log("Harga:", price);
+                    console.log("Gambar:", image);
+    
+                    alert(`${name} telah ditambahkan ke keranjang!`);
+                });
+            });
+        });
+    </script>
+    
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cartButtons = document.querySelectorAll(".addToCart");
+
+        cartButtons.forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault(); // Mencegah navigasi default
+                
+                const name = this.getAttribute("data-name");
+                const price = parseInt(this.getAttribute("data-price"));
+                const image = this.getAttribute("data-image");
+
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                
+                // Periksa apakah produk sudah ada di keranjang
+                let existingProduct = cart.find(item => item.name === name);
+
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    cart.push({ name, price, image, quantity: 1 });
+                }
+
+                // Simpan kembali ke localStorage
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                alert(name + " telah ditambahkan ke keranjang!");
+
+                // Redirect ke halaman keranjang
+                window.location.href = "keranjangkaosku.html";
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
